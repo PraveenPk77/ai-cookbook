@@ -1,10 +1,8 @@
-"use client"
+// components/analytics.tsx
+"use client";
+
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 
 export function Analytics() {
-  return (
-    <>
-      {/* Add your analytics script here */}
-      {/* Example: Google Analytics, Plausible, etc. */}
-    </>
-  )
+  return <VercelAnalytics />;
 }
