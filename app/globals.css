@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 50% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 215 70% 30%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 45 90% 50%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 45 90% 50%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 215 70% 30%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 13%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 13%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 215 70% 40%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 45 90% 50%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 45 70% 50%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 215 70% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    @apply bg-gradient-to-br from-primary/10 via-primary/5 to-transparent;
+  }
+
+  .recipe-card {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .glass-effect {
+    @apply bg-white/70 dark:bg-black/70 backdrop-blur-md;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.ingredient-tag {
+  @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary/10 text-primary hover:bg-primary/20;
+}
+
+.chef-quote {
+  @apply relative italic text-muted-foreground pl-4 border-l-4 border-primary/50 my-6;
+}
+
+.chef-quote::before {
+  content: '"';
+  @apply absolute -left-2 -top-4 text-5xl text-primary/30 font-serif;
+}
+
+.chef-quote::after {
+  content: '"';
+  @apply absolute -right-2 -bottom-8 text-5xl text-primary/30 font-serif;
+}
+
+.recipe-image-container {
+  @apply relative overflow-hidden rounded-t-xl;
+}
+
+.recipe-image-container::after {
+  content: "";
+  @apply absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-70;
+}
+
+.recipe-step {
+  @apply relative pl-10 pb-8;
+}
+
+.recipe-step::before {
+  @apply absolute left-0 top-0 flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold;
+  content: attr(data-step);
+}
+
+.recipe-step:not(:last-child)::after {
+  content: "";
+  @apply absolute left-3.5 top-7 w-px h-full bg-border;
+}
+
+/* Premium styling additions */
+.premium-card {
+  @apply border-primary/20 shadow-lg shadow-primary/5;
+}
+
+.premium-gradient {
+  @apply bg-gradient-to-br from-primary/80 to-primary;
+}
+
+.premium-text {
+  @apply font-medium tracking-wide;
+}
+
+.premium-border {
+  @apply border-2 border-primary/20;
+}
+
+.premium-shadow {
+  @apply shadow-xl shadow-primary/10;
+}
+
+.premium-button {
+  @apply bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-medium;
+}
+
+.premium-input {
+  @apply border-2 border-primary/20 focus:border-primary/50 focus:ring-primary/30;
+}
+
+.gold-accent {
+  @apply text-secondary;
+}
+
+.navy-bg {
+  @apply bg-primary;
+}
+
+.navy-text {
+  @apply text-primary;
+}
+
+.gold-bg {
+  @apply bg-secondary;
+}
